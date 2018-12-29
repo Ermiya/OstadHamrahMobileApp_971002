@@ -336,6 +336,3 @@ export const disLikeContent = async (lessonContentId,userToken) => {
     throw error;
   }
 }
-
-
-
