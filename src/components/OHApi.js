@@ -336,3 +336,16 @@ export const disLikeContent = async (lessonContentId,userToken) => {
     throw error;
   }
 }
+
+export const getEventList = async () => {
+  try {
+    let response =  fetch(BASE_URL + 'event');
+    let json =  response;
+     console.log('getEventList json : ');
+     console.log(json);
+    return json;
+  } catch (error) {
+    console.log('OHApi_Component catch getEventList method : ');
+    console.log(error);
+  }
+}
