@@ -96,12 +96,12 @@ export default class App extends Component<Props> {
 
         <Scene hideNavBar>
           <Scene key="splash" component={Splash} title="Splash" />
-          <Scene key="eventList" component={EventList} title="Event" />
+          <Scene key="eventList" component={EventList} title="Event" initial />
           <Scene key="EventView" component={EventView} title="EventView" />
           <Scene key="PodcastList" component={PodcastList} title="PodcastList" />
           <Scene key="PodcastView" component={PodcastView} title="PodcastView" />
 
-          <Scene key="testDeckSwiper" component={testDeckSwiper} title="testDeckSwiper" initial />
+          <Scene key="testDeckSwiper" component={testDeckSwiper} title="testDeckSwiper"  />
 
             <Scene key="login"     component={Login}     title="Login" />
             <Scene key="favorite"  component={Favorite}  title="favorite" />

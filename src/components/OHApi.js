@@ -4,8 +4,9 @@ import * as Common from './Common';
 var jwt_decode = require('jwt-decode');
 
 //-------------------------------------
-const BASE_URL = 'http://5.160.65.115/api/';
+//const BASE_URL = 'http://5.160.65.115/api/';
 //const BASE_URL = 'http://www.nikatarh.com/api/'; 
+const BASE_URL = 'http://www.daneshgahhamrah.com/api/'; 
 
 const VERIFICATION_URL = BASE_URL + 'verify/VerifyMobileNo';
 const AUTHENTICATE_URL = BASE_URL + 'Authenticate';
@@ -340,8 +341,8 @@ export const disLikeContent = async (lessonContentId,userToken) => {
 export const getEventList = async () => {
   try {
     // test
-    let response =  fetch(BASE_URL + 'event');
-    let json =  response;
+    let response = await fetch(BASE_URL + 'event');
+    let json = await response.json();
      console.log('getEventList json : ');
      console.log(json);
     return json;

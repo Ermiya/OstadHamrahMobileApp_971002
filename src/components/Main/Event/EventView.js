@@ -40,14 +40,14 @@ export default class EventView extends Component {
            
               <Text style={{ fontFamily: 'IRANSansMobile', fontSize: 13 }}>{event.title}</Text>
               {/* <Text note>{ moment(product.updated_at).format('jYYYY/jM/jD') }</Text> */}
-              <Text note>{moment(event.updated_at).fromNow()}</Text>
+              <Text note>{moment(event.CreateDate).fromNow()}</Text>
            
           </Right>
         </CardItem>
 
         <CardItem cardBody>
           <Image
-            source={{ uri: event.ImgUrl }}
+            source={{ uri:  'http://www.daneshgahhamrah.com/Resource/Img/Event/'+event.ImgUrl }}
             style={{ height: 300, width: 150, flex: 2 }}
           />
         </CardItem>

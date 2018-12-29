@@ -29,7 +29,7 @@ export default class Event extends Component {
 
           
 
-              <Text note>{moment(event.updated_at).fromNow()}</Text>
+              <Text note>{moment(event.CreateDate).fromNow()}</Text>
               {/* <Text note>{ moment(product.updated_at).format('jYYYY/jM/jD') }</Text> */}
 
 
@@ -46,7 +46,7 @@ export default class Event extends Component {
 
         <CardItem cardBody button onPress={() => Actions.push('EventView', { event })} >
           <Image
-            source={{ uri: event.ImgUrl }}
+            source={{ uri: 'http://www.daneshgahhamrah.com/Resource/Img/Event/'+ event.ImgUrl }}
             style={{ height: 100, width: 70, flex: 1 }}
           />
         </CardItem>
