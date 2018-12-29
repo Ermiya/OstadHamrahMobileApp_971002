@@ -339,6 +339,7 @@ export const disLikeContent = async (lessonContentId,userToken) => {
 
 export const getEventList = async () => {
   try {
+    // test
     let response =  fetch(BASE_URL + 'event');
     let json =  response;
      console.log('getEventList json : ');
