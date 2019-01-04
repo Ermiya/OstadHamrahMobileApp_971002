@@ -46,7 +46,8 @@ export default class Event extends Component {
 
         <CardItem cardBody button onPress={() => Actions.push('EventView', { event })} >
           <Image
-            source={{ uri: 'http://www.daneshgahhamrah.com/Resource/Img/Event/'+ event.ImgUrl }}
+            //source={{ uri: 'http://www.daneshgahhamrah.com/Resource/Img/Event/'+ event.ImgUrl }}
+            source={{ uri:  event.ImgUrl }}
             style={{ height: 100, width: 70, flex: 1 }}
           />
         </CardItem>

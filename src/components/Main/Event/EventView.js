@@ -47,7 +47,8 @@ export default class EventView extends Component {
 
         <CardItem cardBody>
           <Image
-            source={{ uri:  'http://www.daneshgahhamrah.com/Resource/Img/Event/'+event.ImgUrl }}
+            //source={{ uri:  'http://www.daneshgahhamrah.com/Resource/Img/Event/'+event.ImgUrl }}
+            source={{ uri: event.ImgUrl }}
             style={{ height: 300, width: 150, flex: 2 }}
           />
         </CardItem>

@@ -7,6 +7,8 @@ var jwt_decode = require('jwt-decode');
 //const BASE_URL = 'http://5.160.65.115/api/';
 //const BASE_URL = 'http://www.nikatarh.com/api/'; 
 const BASE_URL = 'http://www.daneshgahhamrah.com/api/'; 
+//const BASE_URL = 'http://localhost:49973/api/'; 
+
 
 const VERIFICATION_URL = BASE_URL + 'verify/VerifyMobileNo';
 const AUTHENTICATE_URL = BASE_URL + 'Authenticate';
@@ -341,9 +343,45 @@ export const disLikeContent = async (lessonContentId,userToken) => {
 export const getEventList = async () => {
   try {
     // test
-    let response = await fetch(BASE_URL + 'event');
+    console.log('Fetch Url ');
+    let response = await fetch(BASE_URL + 'Event');
     let json = await response.json();
      console.log('getEventList json : ');
+     console.log(json);
+    return json;
+  } catch (error) {
+    console.log('OHApi_Component catch getEventList method : ');
+    console.log(error);
+  }
+}
+export const getEventList2 = async (userToken) => {
+  try {
+    // test
+
+    //let tok ='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjA5MTkzNDYyNTYxIiwibmFtZWlkIjoiNjMiLCJyb2xlIjoiVXNlciIsIm5iZiI6MTU0NDEwOTc2NywiZXhwIjoxNTc1NjQ1NzY3LCJpYXQiOjE1NDQxMDk3NjcsImlzcyI6ImtpbXlhIiwiYXVkIjoiT3N0YWRIYW1yYWgifQ.Gbz4U3PGQXFyE7CxtLaG9vGQTLb5c3UhBwICRc9bca4';
+    console.log('444 token json : ' + userToken);
+    
+    const decoded = jwt_decode(userToken);
+    console.log(decoded);
+
+    const UserId = decoded.nameid;
+    console.log(UserId);
+     response = await fetch(BASE_URL + 'Event/GetEventsByUserId/'+UserId
+    //let response = await fetch(BASE_URL + 'Event'
+    // ,{
+    //   timeout: Common.API_TIMEOUT,
+    //   headers: {
+    //     'Accept': 'application/json',
+    //     'Content-Type': 'application/json'
+    //     //'Authorization':  "Bearer " + tok.replace('"','').replace('"','')
+    //   }
+      
+    // }
+    );
+    
+    
+    let json = await response.json();
+     console.log('getEventList2 json : ');
      console.log(json);
     return json;
   } catch (error) {

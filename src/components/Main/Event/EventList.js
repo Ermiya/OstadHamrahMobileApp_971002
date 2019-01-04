@@ -30,23 +30,27 @@ export default class EventList extends Component {
     }
   }
 
-  componentWillMount() {
-      // AsyncStorage.getItem('UserToken').then((userToken) => {
-      // console.log('VideoList getUserToken AsyncStorage : ');
-      // console.log(userToken);
-      // if (userToken !== null) {
-      //   this.setState({ userToken:userToken },()=> {
+   componentWillMount() {
+       console.log('EventList getUserToken AsyncStorage : ' + AsyncStorage.getItem('UserToken'));
+
+    //console.log(await this.getEvents());
+
+    AsyncStorage.getItem('User_Token').then((userToken) => {
+      console.log('EventList getUserToken AsyncStorage 2: ');
+       console.log(userToken);
+       if (userToken !== null) {
+         this.setState({ userToken:userToken },()=> {
           this.getEvents();
           //console.log(this.state.events);
-    //     });
-    //   } else {
-    //     Actions.reset('root');
-    //   }
-    // }).catch((error) => {
-    //   console.log('VideoList catch AsyncStorage userToken : ');
-    //   console.log(error);
-    //   throw error;
-    // });
+         });
+       } else {
+         Actions.reset('root');
+       }
+    }).catch((error) => {
+      console.log('AsyncStorage catch AsyncStorage userToken : ');
+      console.log(error);
+      throw error;
+    });
   }
 
   renderItem({ item }) {
@@ -76,46 +80,19 @@ export default class EventList extends Component {
     const { page } = this.state;
     console.log(page);
 
-    //   const result = await fetch(`http://roocket.org/api/products?page=${page}`);
-    //   console.log(result);
-    //   const json = await result.json();
-    //   console.log(json);
-    // //  console.log(json.data);
+      console.log('test debug 222'); 
+     // console.log(AsyncStorage.getItem('User_Token'));
+     const response = await OHApi.getEventList2(userToken);
+      //const response = await OHApi.getEventList2(userToken);
 
-    //   console.log(json.data.data);
-      console.log('test debug 1');
+     console.log('getEventList length : ');
+      console.log(response.length);
 
-    const response = await OHApi.getEventList();
-      console.log(response);
-   
-
-      console.log('test debug 2');
-
-      // let response = await fetch('http://5.160.65.115/api/event');
-      // // let response2 =  fetch('http://5.160.65.115/api/test');
-      // console.log(response);
-      // const json = await response.json();
-      // console.log(json);
-      // console.log(json[0]);
-      //console.log(response);
-      //console.log(response._55.Response);
-      //console.log('end test debug');
-
-      //const json2 =  response.json();
-
-      //console.log('json2');
-    //  console.log(json2);
-    // console.log('json2.data');
-    // console.log(json2.data);
-
-    // console.log('json2.data.data');
-    // console.log(json2.data.data);
-    // console.log('test debug');
-    //  console.log('getEventList json : ');
-    //  console.log(response);
+    if(response.length > 0) {
     this.setState({
       events :response
     });
+  }
       console.log('this.state.events');
 
     console.log(this.state.events);
@@ -192,11 +169,11 @@ export default class EventList extends Component {
               keyExtractor={item => item.Id.toString()}
               ListEmptyComponent={() => <Spinner />}
               onEndReached={this.handleLoadMore.bind(this)}
-             // onEndReachedThreshold={0.5}
-              //ListFooterComponent={this.handleFooter.bind(this)}
-              //refreshing={this.state.refreshing}
-              //onRefresh={this.handleRefresh.bind(this)}
-              //initialNumToRender={1}
+              onEndReachedThreshold={0.5}
+              ListFooterComponent={this.handleFooter.bind(this)}
+              refreshing={this.state.refreshing}
+              onRefresh={this.handleRefresh.bind(this)}
+              initialNumToRender={1}
             />
        
        </Container>

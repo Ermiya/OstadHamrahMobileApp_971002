@@ -96,7 +96,7 @@ export default class App extends Component<Props> {
 
         <Scene hideNavBar>
           <Scene key="splash" component={Splash} title="Splash" />
-          <Scene key="eventList" component={EventList} title="Event" initial />
+          <Scene key="eventList" component={EventList} title="Event"  />
           <Scene key="EventView" component={EventView} title="EventView" />
           <Scene key="PodcastList" component={PodcastList} title="PodcastList" />
           <Scene key="PodcastView" component={PodcastView} title="PodcastView" />
@@ -118,7 +118,7 @@ export default class App extends Component<Props> {
             >
                 <Scene hideNavBar>
                 <Scene hideNavBar>
-                  <Scene key="profile" component={Profile} initial />
+                  <Scene key="profile" component={Profile}  />
                   <Scene key="faq" component={FAQ} />
                   <Scene key="aboutUs" component={AboutUs} />
                   <Scene key="contactUs" component={ContactUs} />
@@ -139,12 +139,12 @@ export default class App extends Component<Props> {
               </Scene>
 
               <Scene key="video" icon={ ({ tintColor }) => <Icon name="film" size={30} color={tintColor} /> } title="ویدیوها" titleStyle={{ fontFamily:'IRANSansMobile' }}  initial >
-               <Scene key="videoList" component={ VideoList } hideNavBar initial />
+               <Scene key="videoList" component={ VideoList } hideNavBar  />
                <Scene key="playVideo" component={PlayVideo} hideNavBar />
               </Scene>
 
               <Scene key="event" icon={ ({ tintColor }) => <Icon name="calendar" size={30} color={tintColor} /> } title="رخدادها" titleStyle={{ fontFamily:'IRANSansMobile' }} >
-               <Scene component={EventList} title="Event" hideNavBar/>
+               <Scene component={EventList} title="Event" hideNavBar initial/>
               </Scene>
 
               <Scene key="PodcastList" icon={ ({ tintColor }) => <Icon name="podcast" size={30} color={tintColor} /> } title="پادکست" titleStyle={{ fontFamily:'IRANSansMobile' }} >
