@@ -81,8 +81,10 @@ export default class EventList extends Component {
     console.log(page);
 
       console.log('test debug 222'); 
-     // console.log(AsyncStorage.getItem('User_Token'));
-     const response = await OHApi.getEventList2(userToken);
+      console.log(AsyncStorage.getItem('User_Token'));
+      console.log(this.state.userToken);
+      
+     const response = await OHApi.getEventList2(this.state.userToken);
       //const response = await OHApi.getEventList2(userToken);
 
      console.log('getEventList length : ');
@@ -91,6 +93,20 @@ export default class EventList extends Component {
     if(response.length > 0) {
     this.setState({
       events :response
+    });
+  }
+  else
+  {
+    this.setState({
+      events :[
+             { 
+               Id : 1,
+               ImgUrl : 'e',
+               Title:'رویدادی وجود ندارد',
+               updated_at : '2016-05-02T00:00:00',
+               Description : 'رویدادی وجود ندارد'        
+             }
+      ]
     });
   }
       console.log('this.state.events');
