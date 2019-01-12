@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Image } from 'react-native';
-import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Right, Body } from 'native-base';
+import { Image, Linking } from 'react-native';
+import { Container, Header, Content, Card, CardItem, Thumbnail, Text, View, Button, Icon, Left, Right, Body } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import moment from 'moment-jalaali';
 import * as Common from '../../Common';
@@ -72,6 +72,24 @@ export default class PodcastView extends Component {
 
           </Text>
 
+          <View style={{ fontFamily: 'IRANSansMobile', fontSize: 13 }}>
+            {/* <Button title="Click me" onPress={() => { Linking.openURL('http://www.daneshgahhamrah.com') }} /> */}
+            <Button title="Click me" onPress={() => { Linking.openURL(podcast.Content) }} />
+          </View>
+        </CardItem>
+        }
+
+        {<CardItem>
+
+
+
+
+          <Button style={{ height: 30, backgroundColor: Common.BRAND_COLOR_1 }}
+              onPress={() => { Linking.openURL(podcast.Content) }} 
+              rounded>
+              { <Text style={{ fontFamily:'IRANSansMobile',fontSize:13 }}>دانلود </Text> }
+              <Icon name="cloud-download" size={45} color={Common.BRAND_COLOR_1} />
+            </Button>
         </CardItem>
         }
 

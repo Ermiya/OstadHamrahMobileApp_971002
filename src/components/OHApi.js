@@ -389,3 +389,18 @@ export const getEventList2 = async (userToken) => {
     console.log(error);
   }
 }
+
+export const getPodcastList = async () => {
+  try {
+    // test
+    console.log('Fetch Url ');
+    let response = await fetch(BASE_URL + 'Podcast');
+    let json = await response.json();
+     console.log('getPodcastList json : ');
+     console.log(json);
+    return json;
+  } catch (error) {
+    console.log('OHApi_Component catch getPodcastList method : ');
+    console.log(error);
+  }
+}
