@@ -19,6 +19,7 @@ const OFFUSERFAVORITE = BASE_URL + 'favorite/OffUserFavorite'
 const PAGEDVIDEOLIST  = BASE_URL + 'lesson/GetPagedVideoList';
 const LIKECONTENT = BASE_URL + 'lesson/LikeContent';
 const DISLIKECONTENT = BASE_URL + 'lesson/dislikeContent';
+const UPDATEUSER = BASE_URL + 'user/updateuser';
 // ---- KAVIMO -------------------------
 const BASE_KAVIMO_URL = 'https://kavimo.com/api/v1/';
 const AUTHENTICATE_KAVIMO_URL = BASE_KAVIMO_URL + 'auth/?access-token=' + Common.KAVIMO_ACCESS_TOKEN;
@@ -403,4 +404,75 @@ export const getPodcastList = async () => {
     console.log('OHApi_Component catch getPodcastList method : ');
     console.log(error);
   }
+}
+
+
+export const GetUserProfile = async (userToken) => {
+  try {
+    // test
+
+    //let tok ='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjA5MTkzNDYyNTYxIiwibmFtZWlkIjoiNjMiLCJyb2xlIjoiVXNlciIsIm5iZiI6MTU0NDEwOTc2NywiZXhwIjoxNTc1NjQ1NzY3LCJpYXQiOjE1NDQxMDk3NjcsImlzcyI6ImtpbXlhIiwiYXVkIjoiT3N0YWRIYW1yYWgifQ.Gbz4U3PGQXFyE7CxtLaG9vGQTLb5c3UhBwICRc9bca4';
+    console.log('token json : ' + userToken);
+    
+    const decoded = jwt_decode(userToken);
+    console.log(decoded);
+
+    const UserId = decoded.nameid;
+    console.log(UserId);
+     response = await fetch(BASE_URL + 'User/'+UserId
+    //let response = await fetch(BASE_URL + 'Event'
+    // ,{
+    //   timeout: Common.API_TIMEOUT,
+    //   headers: {
+    //     'Accept': 'application/json',
+    //     'Content-Type': 'application/json'
+    //     //'Authorization':  "Bearer " + tok.replace('"','').replace('"','')
+    //   }
+      
+    // }
+    );
+    
+    
+    let json = await response.json();
+     console.log('Get User Profile json : ');
+     console.log(json);
+    return json;
+  } catch (error) {
+    console.log('OHApi_Component catch Get User Profile method : ');
+    console.log(error);
+  }
+}
+
+
+export const UpdateUser = async (user,userToken) => {
+  try {
+  const decoded = jwt_decode(userToken);
+  
+  console.log(decoded);
+
+  const response = await fetch(UPDATEUSER, {
+    timeout: Common.API_TIMEOUT,
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': "Bearer " + userToken.replace('"','').replace('"','')
+    },
+    body: JSON.stringify({
+      // UserId: decoded.nameid,
+      // LessonContentId:lessonContentId
+      user
+    }),
+  });
+
+  const json = await response.json();
+  console.log('UPDATEUSER json : ');
+  console.log(json);
+
+  return json;
+} catch (error) {
+  console.log('OHApi_Component catch UPDATEUSER method : ');
+  console.log(error);
+  throw error;
+}
 }
